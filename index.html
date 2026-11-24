@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You 💗</title>
+    <link rel="stylesheet" href="project_J_Style.css">
+</head>
+<body>
+<h1>Hola mi amor </h1>
+    <h2>Quería darte este detallito mediante una pagina web, espero que te guste </h2>
+
+<nav>
+    <ul>
+        <li><a href="#mensaje">Mensaje</a></li>
+        <li><a href="contador.html">Contador</a></li>
+    </ul>
+</nav>
+
+    <pre id="corazon" class="dibujo-puntos"></pre>
+
+<script>
+  const arte = `      ⢀⣠⣤⣶⣶⣤⣄⡀  ⢀⣠⣤⣶⣶⣤⣄⡀
+    ⢠⣾⣿⣿⣿⣿⣿⣿⣿⣷⣶⣿⣿⣿⣿⣿⣿⣿⣷⡄
+   ⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+   ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
+    ⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟
+     ⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃
+       ⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁
+          ⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁
+             ⠈⠻⣿⣿⣿⣿⠟⠁
+                ⠈⠻⠟⠁`;
+
+  const contenedor = document.getElementById("corazon");
+  let indice = 0;
+
+  function escribirPuntos() {
+    if (indice < arte.length) {
+      contenedor.textContent += arte.charAt(indice);
+      indice++;
+      // Velocidad de transcripción en milisegundos (15 es rápido y fluido)
+      setTimeout(escribirPuntos, 15); 
+    } else {
+      // Cuando termina de escribirse, activa la clase que lo hace brillar
+      contenedor.classList.add("brillar");
+    }
+  }
+
+  // Inicia la animación al cargar la página
+  escribirPuntos();
+</script>
+
+<div id="player-wrapper">
+  <div id="reproductor" class="reproductor">
+    <div class="info-cancion">
+      <p id="titulo-cancion">Nuestra canción 1</p>
+      <span id="artista-cancion">Artista</span>
+    </div>
+
+    <div class="barra-tiempo">
+      <span id="tiempo-actual">0:00</span>
+      <input type="range" id="progreso" value="0" min="0" max="100">
+      <span id="tiempo-total">0:00</span>
+    </div>
+
+<div class="controles">
+      <button id="btn-prev" title="Anterior">⏮</button>
+      <button id="btn-play" title="Reproducir / Pausar">▶</button>
+      <button id="btn-next" title="Siguiente">⏭</button>
+    </div>
+
+    <video id="audio" style="width: 0; height: 0; opacity: 0; position: absolute;"></video>
+  </div>
+</div>
+
+<script src="project_J.js"></script>
+
+<section id="mensaje" class="tarjeta-mensaje">
+  <h3>Para ti, Jennie 💗</h3>
+
+  <p>A veces pienso en lo curioso que es la vida, en cómo dos personas pueden pasar por tantas cosas, tomar caminos diferentes y aun así encontrar la manera de volver a coincidir. Y si algo tengo claro es que, si me dieran la oportunidad de volver a vivir nuestra historia, incluso sabiendo todo lo que nos tocó pasar, volvería a elegirte.</p>
+
+  <p>No voy a mentirte, hubo momentos en los que pensé que nuestra historia había llegado a su final, momentos en los que me costaba imaginar un futuro en el que todavía estuvieras conmigo. Pero creo que nunca terminé de acostumbrarme a la idea de que fueras alguien de mi pasado, porque, aunque las cosas cambiaran, siempre hubo una parte de mí que seguía guardando con muchísimo cariño todo lo que alguna vez fuimos.</p>
+
+  <p>Y ahora que la vida nos ha permitido volver a encontrarnos, quiero que sepas que no pienso tomar esta oportunidad como si fuera cualquier cosa. No quiero que seamos simplemente dos personas intentando recuperar lo que tuvieron, quiero que seamos dos personas que aprendieron de lo que vivieron y que ahora tienen la oportunidad de construir algo todavía más bonito.</p>
+
+  <p>Sé que no podemos cambiar lo que pasó, que hay recuerdos que quizá todavía nos duelan y cosas que ambos pudimos haber hecho de una manera diferente, pero tampoco quiero que nuestro pasado se convierta en algo que nos impida disfrutar de lo que tenemos ahora. Quiero aprender a quererte mejor, a escucharte más, a entenderte incluso en esos momentos en los que las palabras no sean suficientes. Quiero que nunca tengas que preguntarte si realmente quiero estar contigo, porque mi intención es demostrártelo incluso en los días más simples.</p>
+
+  <p>No sabes lo bonito que se siente volver a tenerte en mi vida, volver a compartir contigo mis días, mis pensamientos y todas esas pequeñas cosas que, de alguna manera, siempre me recuerdan por qué me enamoré de ti. Si antes me parecías una persona maravillosa, ahora también puedo decir que eres alguien con quien quiero seguir aprendiendo, creciendo y descubriendo todo lo que todavía nos falta por vivir.</p>
+
+  <p>Quiero volver a tener miles de recuerdos contigo, conocer nuevas versiones de ti, acompañarte en tus logros, apoyarte cuando las cosas no salgan como esperas y estar presente en esos días en los que simplemente necesites cariño. Quiero seguir enamorándome de tus ocurrencias, de tus locuras, de tus ojitos hermosos, de tu sonrisa y hasta de esas pequeñas cosas que probablemente tú ni siquiera notas, pero que para mí siempre han tenido algo especial.</p>
+
+  <p>Y no quiero prometerte que todo será perfecto, porque sé que somos humanos y que seguramente habrá días complicados, pero sí quiero prometerte que no dejaré de intentarlo. Que esta vez no quiero permitir que el orgullo, los malos entendidos o las cosas que no sabemos expresar terminen hablando por nosotros. Quiero que siempre podamos encontrar la manera de escucharnos y recordar que estamos del mismo lado.</p>
+
+  <p>Jennifer, si algo me ha enseñado todo lo que vivimos es que no quiero dar por sentado el tenerte conmigo. Quiero aprovechar cada oportunidad de hacerte sentir querida, de recordarte lo importante que eres para mí y de demostrarte que no solamente me emociona tenerte hoy, sino también imaginar todos los mañanas en los que todavía pueda llamarte mi amor.</p>
+
+  <p>No sé qué tenga preparado el destino para nosotros, pero esta vez no quiero adelantarme a imaginar cómo terminará nuestra historia. Prefiero vivirla contigo, disfrutar cada etapa y construir poquito a poquito ese futuro que alguna vez imaginé tantas veces.</p>
+
+  <p>Y si me preguntas qué quiero contigo, mi respuesta sigue siendo la misma: quiero que seas tú. En esta vida, en los días buenos, en los complicados, en las pequeñas aventuras y en todos esos momentos que todavía nos faltan por compartir. No necesito que seamos perfectos, solamente quiero que nunca perdamos las ganas de elegirnos.</p>
+
+  <p>Quizá no podamos volver al principio y hacer las cosas de otra manera, pero podemos escribir algo nuevo con todo lo que aprendimos. Y créeme, no sabes lo feliz que me hace tener nuevamente la oportunidad de hacerlo contigo.</p>
+
+  <p>Te amo, Jennie. Y si alguna vez llegas a dudar de lo mucho que significas para mí, recuerda que entre tantas personas, tantas casualidades y tantos caminos posibles, yo sigo encontrando en ti a esa persona con la que quiero compartir los míos.</p>
+
+  <p>Esta vez no quiero hablarte de un adiós, quiero hablarte de todos los momentos que todavía nos esperan. Porque si algo quiero que tengas claro es que mi historia favorita sigue siendo aquella en la que tú y yo nos encontramos.</p>
+
+  <p class="firma">Con todo mi amor,<br><span>Bear. ♡</span></p>
+</section>
+
+</body>
+</html>

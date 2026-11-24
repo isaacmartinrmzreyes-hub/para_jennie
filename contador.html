@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Tiempo ⏳💗</title>
+    <link rel="stylesheet" href="project_J_Style.css">
+</head>
+<body class="pagina-contador">
+
+    <nav class="nav-volver">
+        <a href="project_J.html">← Volver al inicio</a>
+    </nav>
+
+    <section class="tarjeta-contador">
+        <h3>Nuestro tiempo juntos ⏳💗</h3>
+        <p class="subtitulo-contador">Cada segundo a tu lado vale la pena</p>
+
+        <div class="grid-contador">
+            <div class="caja-tiempo">
+                <span id="anios">0</span>
+                <small>Años</small>
+            </div>
+            <div class="caja-tiempo">
+                <span id="meses">0</span>
+                <small>Meses</small>
+            </div>
+            <div class="caja-tiempo">
+                <span id="dias">0</span>
+                <small>Días</small>
+            </div>
+            <div class="caja-tiempo">
+                <span id="horas">00</span>
+                <small>Horas</small>
+            </div>
+            <div class="caja-tiempo">
+                <span id="minutos">00</span>
+                <small>Minutos</small>
+            </div>
+            <div class="caja-tiempo">
+                <span id="segundos">00</span>
+                <small>Segundos</small>
+            </div>
+        </div>
+
+        <p class="pie-contador">Y nuestra historia apenas comienza... ♡</p>
+    </section>
+
+    <script>
+        // Cambia esta fecha por la de ustedes: new Date(AÑO, MES - 1, DÍA, HORA, MINUTO, SEGUNDO)
+        // Recuerda que los meses empiezan en 0 (Enero = 0, Febrero = 1, Marzo = 2...)
+        const fechaInicio = new Date(2025, 10, 8, 0, 0, 0);
+
+        function actualizarContador() {
+            const ahora = new Date();
+            if (ahora < fechaInicio) return;
+
+            let anios = ahora.getFullYear() - fechaInicio.getFullYear();
+            let meses = ahora.getMonth() - fechaInicio.getMonth();
+
+            if (meses < 0 || (meses === 0 && ahora.getDate() < fechaInicio.getDate())) {
+                anios--;
+                meses += 12;
+            }
+
+            if (ahora.getDate() < fechaInicio.getDate()) {
+                meses--;
+                if (meses < 0) {
+                    meses += 12;
+                    anios--;
+                }
+            }
+
+            const fechaAncla = new Date(
+                fechaInicio.getFullYear() + anios,
+                fechaInicio.getMonth() + meses,
+                fechaInicio.getDate(),
+                fechaInicio.getHours(),
+                fechaInicio.getMinutes(),
+                fechaInicio.getSeconds()
+            );
+
+            if (fechaAncla.getDate() !== fechaInicio.getDate()) {
+                fechaAncla.setDate(0);
+            }
+
+            const diferenciaMs = ahora - fechaAncla;
+            const dias = Math.floor(diferenciaMs / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenciaMs / (1000 * 60 * 60)) % 24);
+            const minutos = Math.floor((diferenciaMs / (1000 * 60)) % 60);
+            const segundos = Math.floor((diferenciaMs / 1000) % 60);
+
+            document.getElementById("anios").textContent = anios;
+            document.getElementById("meses").textContent = meses;
+            document.getElementById("dias").textContent = dias;
+            document.getElementById("horas").textContent = horas < 10 ? "0" + horas : horas;
+            document.getElementById("minutos").textContent = minutos < 10 ? "0" + minutos : minutos;
+            document.getElementById("segundos").textContent = segundos < 10 ? "0" + segundos : segundos;
+        }
+
+        actualizarContador();
+        setInterval(actualizarContador, 1000);
+    </script>
+
+</body>
+</html>

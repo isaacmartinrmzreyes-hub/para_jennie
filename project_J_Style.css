@@ -1,0 +1,374 @@
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: sans-serif;
+  margin: 0;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  font-size: 55px;
+  color: darkorchid;
+  margin-bottom: 10px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 16px;
+  color: darkorchid;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+nav {
+  background-color: #1a1a1a;
+  padding: 12px 30px;
+  border-radius: 50px;
+  margin-bottom: 30px; /* Separa el menú del corazón */
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none; /* Quita el subrayado de los enlaces */
+  font-size: 18px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ff4d88;
+}
+.dibujo-puntos {
+  color: #ff4d88;
+  font-family: monospace;
+  font-size: 30px;        /* <--- Aumenta este número para hacerlo más grande (ej. 28px, 32px, 36px) */
+  line-height: 1.1;
+  display: inline-block;
+  text-align: left;
+  margin: 0;
+  transition: all 0.8s ease;
+
+}
+
+/* Clase que se activa automáticamente al terminar */
+.brillar {
+  color: #ff85ad; /* Un rosa un poco más luminoso en el centro */
+  text-shadow: 
+    0 0 10px #ff4d88,
+    0 0 20px #ff4d88,
+    0 0 40px #ff1a66;
+  animation: latidoBrillo 2s infinite alternate;
+}
+
+/* Efecto opcional para que el brillo pulse suavemente como un latido */
+@keyframes latidoBrillo {
+  from {
+    text-shadow: 0 0 8px #ff4d88, 0 0 15px #ff4d88;
+  }
+  to {
+    text-shadow: 0 0 15px #ff4d88, 0 0 30px #ff1a66, 0 0 45px #ff1a66;
+  }
+}
+
+/* Contenedor que reserva el espacio debajo del corazón */
+#player-wrapper {
+  width: 100%;
+  max-width: 340px;
+  min-height: 145px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Diseño base del reproductor */
+.reproductor {
+  width: 320px;
+  background-color: #141414;
+  border: 1px solid #ff4d88;
+  border-radius: 20px;
+  padding: 16px 20px;
+  box-shadow: 0 0 15px rgba(255, 77, 136, 0.25);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Estado cuando bajas en la página: cuadrito flotante a la derecha */
+.reproductor.flotante {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 260px;
+  padding: 12px 16px;
+  background-color: rgba(20, 20, 20, 0.95);
+  box-shadow: 0 0 20px rgba(255, 77, 136, 0.5);
+  z-index: 1000;
+}
+
+.info-cancion {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.info-cancion p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-cancion span {
+  font-size: 12px;
+  color: #ff85ad;
+}
+
+/* Barra de tiempo */
+.barra-tiempo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #cccccc;
+  margin-bottom: 12px;
+}
+
+#progreso {
+  flex: 1;
+  accent-color: #ff4d88; /* Pinta la barra y el círculo de rosa */
+  cursor: pointer;
+  height: 4px;
+}
+
+/* Botones de control */
+.controles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.controles button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.controles button:hover {
+  color: #ff4d88;
+  transform: scale(1.15);
+}
+
+#btn-play {
+  background-color: #ff4d88;
+  color: #000000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#btn-play:hover {
+  background-color: #ff85ad;
+  color: #000000;
+}
+
+/* Desplazamiento suave al hacer clic en el menú */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Tarjeta del mensaje */
+.tarjeta-mensaje {
+  width: 90%;
+  max-width: 680px;
+  margin: 70px auto 130px auto;
+  padding: 35px 30px;
+  background-color: #141414;
+  border: 1px solid #ff4d88;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 77, 136, 0.25);
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.tarjeta-mensaje h3 {
+  text-align: center;
+  color: #ff85ad;
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(255, 77, 136, 0.5);
+}
+
+.tarjeta-mensaje p {
+  color: #f2f2f2;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.tarjeta-mensaje .firma {
+  text-align: right;
+  margin-top: 30px;
+  margin-bottom: 0;
+  color: #cccccc;
+  font-style: italic;
+}
+
+.tarjeta-mensaje .firma span {
+  color: #ff4d88;
+  font-weight: bold;
+  font-size: 19px;
+  font-style: normal;
+  text-shadow: 0 0 8px rgba(255, 77, 136, 0.6);
+}
+
+/* Ajuste para pantallas de celular */
+@media (max-width: 600px) {
+  .tarjeta-mensaje {
+    padding: 25px 20px;
+    margin-bottom: 150px;
+  }
+
+  .tarjeta-mensaje p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+}
+
+/* Vista exclusiva de la página del contador */
+body.pagina-contador {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.nav-volver {
+  margin-bottom: 20px;
+}
+
+.nav-volver a {
+  color: #ff85ad;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 77, 136, 0.5);
+  border-radius: 20px;
+  background-color: #141414;
+  transition: all 0.3s ease;
+}
+
+.nav-volver a:hover {
+  background-color: #ff4d88;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 77, 136, 0.7);
+}
+
+/* Tarjeta del contador */
+.tarjeta-contador {
+  width: 100%;
+  max-width: 650px;
+  padding: 35px 25px;
+  background-color: #141414;
+  border: 1px solid #ff4d88;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 77, 136, 0.3);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.tarjeta-contador h3 {
+  color: #ff85ad;
+  font-size: 24px;
+  margin: 0 0 8px 0;
+  text-shadow: 0 0 10px rgba(255, 77, 136, 0.5);
+}
+
+.subtitulo-contador {
+  color: #cccccc;
+  font-size: 15px;
+  margin: 0 0 25px 0;
+}
+
+.grid-contador {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.caja-tiempo {
+  background-color: #0d0d0d;
+  border: 1px solid rgba(255, 77, 136, 0.45);
+  border-radius: 14px;
+  padding: 16px 10px;
+  box-shadow: inset 0 0 12px rgba(255, 77, 136, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.caja-tiempo span {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff4d88;
+  text-shadow: 0 0 10px rgba(255, 77, 136, 0.7);
+  line-height: 1.2;
+}
+
+.caja-tiempo small {
+  margin-top: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #f2f2f2;
+}
+
+.pie-contador {
+  color: #ff85ad;
+  font-style: italic;
+  font-size: 15px;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .grid-contador {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .caja-tiempo span {
+    font-size: 24px;
+  }
+}
